@@ -25,6 +25,18 @@ Route::get('/','UsersController@index');
 
 Route::resource('users','UsersController', ['only' => ['show']]);
 
+Route::group(['prefix' => 'users/{id}'], function() {
+    Route::get('followings', 'UsersController@followings')->name('followings');
+    Route::get('followers','UsersController@followings')->name('followers');
+    });
+
 Route::group(['middleware' => 'auth'], function () {
+    Route::put('users','UsersController@rename')->name('rename');
+    
+    Route::group(['prefix' => 'user/{id}'], function() {
+        Route::post('follow','UserFollowController@store')->name('follow');
+        Route::delete('unfollow','UserFollowController@destroy')->name('unfollow');
+    });
+    
     Route::resource('movies', 'MoviesController', ['only' => ['create', 'store', 'destroy']]);
 });
