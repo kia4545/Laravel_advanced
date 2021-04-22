@@ -74,7 +74,7 @@ class UsersController extends Controller
     public function followers($id)
     {
         $user = User::find($id);
-        $followings = $user->followers()->paginate(9);
+        $followers = $user->followers()->paginate(9);
         
         $data = [
             'user' => $user,
@@ -83,6 +83,6 @@ class UsersController extends Controller
         
         $data += $this->counts($user);
         
-        return view('user.followers', $data);
+        return view('users.followers', $data);
     }
 }
