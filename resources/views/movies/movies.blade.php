@@ -13,7 +13,7 @@
             if($json){
                 $getData = json_decode( $json , true);
                 if($getData['pageInfo']['totalResults']==0){
-                    $video_title="※動画が未登録です"；
+                    $video_title="※動画が未登録です";
                 }else{
                     $video_title=$getData['items']['0']['snippet']['title'];
                 }
