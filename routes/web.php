@@ -20,6 +20,8 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::resource('users', 'UsersController', ['only' => ['show']]);
+Route::get('users','UsersController@change')->name('users.password_change');
+
 
 Route::group(['prefix' => 'users/{id}'], function () {
     Route::get('followings', 'UsersController@followings')->name('followings');

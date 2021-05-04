@@ -85,4 +85,8 @@ class UsersController extends Controller
         
         return view('users.followers', $data);
     }
+    public function change()
+    {
+        return view('users.password_change');
+    }
 }
